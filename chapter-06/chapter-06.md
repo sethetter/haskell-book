@@ -97,7 +97,14 @@ be able to output the values of a type into a human-readable `String`. It is
 
 ## Printing, and side effects
 
-.. notes about `IO` ..
+When we call the `print` or `putStrLn` functions, we are implicitly interacting
+with the `IO` monad. The types of these functions show that they evaluate to `IO
+()`. Meaning an "IO" operation is performed and results in the `()` (unit) type.
+
+This is Haskell's way of making sure side effects happen safely. If a function
+is going to result in any side effect, it must use the `IO` type.
 
 ## Read
 
+Read is used to convert from `String` values to a particular type. It shouldn't
+be used, pretty much ever.
